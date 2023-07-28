@@ -1,0 +1,34 @@
+Delegate is the type safe function pointer.
+it hold the refrence  of the method and calls the method for execution
+
+using System;
+
+namespace Delegate
+{ 
+    //defining a delegate
+    public delegate void addInt(int x, int y);
+    public delegate string sayName(string str);
+   class DelegateUSe{
+       public void addNums(int a , int b){
+           Console.WriteLine(a + b);
+       }
+       public static string SayHello(string s)
+       {
+           return "hello "+ s;
+       }
+      
+       static void Main(){
+           DelegateUSe d = new DelegateUSe();
+         addInt ad = new addInt(d.addNums); //instantating a delegate + look here the parameter is method name
+         ad(30,30); //calling the deligate 
+        sayName say = new sayName(SayHello); /*instantating a delegate  , here we can only pass SayHello only as it is 
+                                              static method and can be call directly inside static class*/
+            string st = say("ram");   // passing value 
+            Console.WriteLine(st);
+           
+       }
+   }
+}
+
+
+ 
