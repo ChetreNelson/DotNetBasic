@@ -1,0 +1,79 @@
+/******************************************************************************
+using interface we can achive the inheritance  capacity
+*******************************************************************************/
+using System;
+namespace Interface{
+    interface ITest1{
+        void add(int a,int b);
+    }
+   
+    struct Child:ITest1
+    {
+        public void add(int a ,int b){
+            Console.WriteLine("sum is "+(a+b));
+        }
+    }
+    class Pr{
+        public static void Main(){
+            int a, b;
+            Console.WriteLine("eneter a number");
+            a=Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("eneter a number");
+            b=Convert.ToInt32(Console.ReadLine());
+            Child n = new Child();
+            n.add(a,b);
+            Console.ReadKey();
+        }
+    }
+}
+
+
+/******************************************************************************
+without interface
+*******************************************************************************/
+using System;
+namespace UsingStruct{
+  
+   
+    struct Child
+    {
+        public void add(int a ,int b){
+            Console.WriteLine("sum is "+(a+b));
+        }
+    }
+    class Pr{
+        public static void Main(){
+            int a, b;
+            Console.WriteLine("eneter a number");
+            a=Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("eneter a number");
+            b=Convert.ToInt32(Console.ReadLine());
+            Child n = new Child(); // new keyword is not compulsory as we can write like this : child n; direclty
+            n.add(a,b);
+            Console.ReadKey();
+        }
+    }
+}
+
+/******************************************************************************
+value is direclty passed in here and we have not used new keyword
+*******************************************************************************/
+using System;
+namespace Interface{
+  
+   
+    struct Child
+    {
+        public void add(int a ,int b){
+            Console.WriteLine("sum is "+(a+b));
+        }
+    }
+    class Pr{
+        public static void Main(){
+        
+            Child n ;
+            n.add(10,20);
+            Console.ReadKey();
+        }
+    }
+}
