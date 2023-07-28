@@ -1,0 +1,37 @@
+/******************************************************************************
+enum is a set of named constant value   , we can use it when we want the user to select or provide or choose 
+from  the defined list 
+
+we can use the enum either after a namespace which is recommended whereas we can use it inside the calss as well
+*******************************************************************************/
+using System;
+namespace UseOfEnum{
+  enum Days{
+      sun,
+      mon, 
+      tue,
+      wed,
+      thu,
+      fri,
+      sat
+  }
+  class Program{
+      public static void Main(){
+          Days d = (Days)1; // by default d can take only valu 0 ie Days d =0  gives sun
+          Console.WriteLine(d);
+         
+          foreach( int i in Enum.GetValues(typeof( Days))) //print values as well as days
+          Console.WriteLine(i + ":" + (Days)i);
+          
+          foreach( string i in Enum.GetNames(typeof( Days)))  //print only days
+          Console.WriteLine(i);
+          
+          
+          foreach( int  i in Enum.GetValues(typeof( Days)))// print only values
+          Console.WriteLine(i);
+           Console.ReadKey();
+      }
+  }
+   
+   
+}
