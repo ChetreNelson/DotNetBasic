@@ -1,0 +1,102 @@
+/******************************************************************************
+A property is a member that provides a flexible mechanism to read, write, or compute the value of a private field
+
+*******************************************************************************/
+
+
+here  in below program we can see the error as we can't change the value that is private from outside of that class
+
+using System;
+namespace UsingProperites{
+    public class circle{
+        double radius= 12.14;
+    }
+    public class Program{
+        public static void Main(){
+            circle c = new circle();
+            double r=c.radius;
+            Console.WriteLine(r);//`UsingProperites.circle.radius' is inaccessible due to its protection level
+        }
+    }
+ 
+}
+
+
+
+/******************************************************************************
+we can remove above problem using public acess modifier but it will not provide control over updation of those value 
+*******************************************************************************/
+
+using System;
+namespace UsingProperites{
+    public class circle{
+       public double radius= 12.14; // since i made the radius public now it can be acess and change by anyone without restriction
+    }
+    public class Program{
+        public static void Main(){
+            circle c = new circle();
+            double r=c.radius;
+            Console.WriteLine(r); // value of radius before chaning is 12.14
+               c.radius=40;
+               double x=c.radius;
+            Console.WriteLine(x); // value of radius after updation is 40 
+        }
+    }
+ 
+}
+
+/******************************************************************************
+to control above problem we are using two method using which we can either set or show value if only one of them are used . 
+to achive both the control we can use both property as below .
+*******************************************************************************/
+
+using System;
+namespace UsingProperites{
+    public class circle{
+       double radius= 12.14; 
+       public double GetRadius(){
+           return radius;// this will now make value displayed only
+       }
+       public void  SetRadius(double value){
+           radius=value;// now on calling this method we can set the new value of the radius
+       }
+    }
+    public class Program{
+        public static void Main(){
+            circle c = new circle();
+            double r=c.GetRadius();
+            Console.WriteLine(r); // value of radius before chaning is 12.14
+            c.SetRadius(40);
+            double x=c.GetRadius();
+            Console.WriteLine(x); // value of radius after updation is 40 
+        }
+    }
+ 
+}
+
+/******************************************************************************
+since above process was lengthy here we are using get and set acessors directly inside same method .
+we can also perform various condition operation using this get and set as well .
+*******************************************************************************/
+
+using System;
+namespace UsingProperites{
+    public class circle{
+       double radius= 12.14; 
+       public double GetSetRadius{ // here two previous method are combine in single
+           get{return radius;}  
+           set{radius= value;}
+       }
+    }
+    public class Program{
+        public static void Main(){
+            circle c = new circle();
+            double radius=c.GetSetRadius;// notice here () are not used after GetSetRadius
+            Console.WriteLine(radius); // value of radius before chaning is 12.14
+            c.GetSetRadius=40;
+            double x=c.GetSetRadius;
+            Console.WriteLine(x); // value of radius after updation is 40 
+        }
+    }
+ 
+}
