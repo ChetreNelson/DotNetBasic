@@ -1,0 +1,39 @@
+using System;
+
+namespace Indexer
+{
+    class MyArray
+    {
+        private int[] array = new int[20]; // A private integer array to store the elements, initialized with a size of 20
+
+        // Indexer declaration
+        public int this[int i]
+        {
+            get
+            {
+                return array[i]; // Getter retrieves the value at the specified index
+            }
+            set
+            {
+                array[i] = value; // Setter sets the value at the specified index
+            }
+        }
+    }
+
+    class Program
+    {
+        static void Main()
+        {
+            MyArray myArray = new MyArray();
+
+            // Setting values using the indexer
+            myArray[0] = 10;
+            myArray[1] = 20;
+
+            // Getting values using the indexer and displaying them
+            Console.WriteLine("Value at index 0:"+ myArray[0]);
+            Console.WriteLine($"Value at index 1: {myArray[1]}");
+         
+        }
+    }
+}
