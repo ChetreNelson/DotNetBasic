@@ -1,0 +1,64 @@
+collections is simply a dynamic array whose size dynammically changes over the chane in item
+it is capable of storing multiple values like array +
+        increasing size dynamically 
+	inserting values into the middle
+	deleting values from the middle  is possible using collectons 
+
+using System;
+using System.Collections;
+namespace Collections 
+{
+   class program{
+       static void Main(){
+           ArrayList al = new ArrayList();
+           Console.WriteLine(al.Capacity); //Capacity  is 0
+           al.Add(300);
+           Console.WriteLine(al.Capacity); // capacity become 4 dynamically now we can add 4 value
+           al.Add(400);
+           al.Add(500);
+           al.Add(600);
+           Console.WriteLine(al.Capacity);// still capacity is 4 as 4 value are entered
+           al.Add(600);
+           Console.WriteLine(al.Capacity); //now capacity is doubled ie. its 8 
+           al.Insert(2,450 // add value in third place ie in second index
+           foreach(object  obj in al)
+           Console.WriteLine(obj + " ");// print all the element
+           
+           Console.WriteLine();
+           
+       }
+   }
+    
+}
+
+
+
+
+Generic collection
+it act like a place holder that replaces with the specified type and remove boxing and unboxing process which make program fast
+
+
+using System;
+using System.Collections.Generic;
+namespace Collections
+{
+   class program{
+       
+       
+       public bool compare <T> (T a , T b)
+       {
+           if (a.Equals(b))
+             return true;
+          return false;
+       }
+       static void Main(){
+         program p= new program();
+         bool result1 = p.compare<float>(30f,49f);
+         Console.WriteLine(result1);
+          bool result2 = p.compare<int>(20,20);
+         Console.WriteLine(result2);
+           
+       }
+   }
+    
+}
