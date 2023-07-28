@@ -1,0 +1,18 @@
+shorthand for writing the anonyums function 
+
+using System;
+namespace LambdaExpression
+{
+    public delegate string GreetingDelegate(string name);
+    class LambdaExpression
+    {
+        public static void Main(){
+           GreetingDelegate obj= ( name)=> //delegate(string name) is replace with (name)=>  
+           { 
+               return "hellow" + name;
+           };
+           string str= obj.Invoke("raju");
+           Console.WriteLine(str);
+        }
+    }
+}
