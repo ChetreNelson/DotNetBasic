@@ -1,0 +1,46 @@
+To create a simple custom validation attribute that allows only even ID numbers, follow these steps:
+
+Create a new class called EvenIdNumberAttribute that derives from ValidationAttribute.
+Override the IsValid method in the EvenIdNumberAttribute class.
+Implement the validation logic to check if the provided ID number is even.
+Apply the EvenIdNumber attribute to the appropriate property in your model.
+Here's the implementation of the custom validation attribute:
+
+
+using System.ComponentModel.DataAnnotations;
+
+namespace YourApplicationName.CustomValidations
+{
+    public class EvenIdNumberAttribute : ValidationAttribute
+    {
+        public override bool IsValid(object value)
+        {
+            if (value != null && value is int idNumber)
+            {
+                // Custom validation logic to check if the ID number is even
+                return idNumber % 2 == 0;
+            }
+
+            // If the value is null or not an int, the validation fails
+            return false;
+        }
+    }
+}
+Now, you can apply the EvenIdNumber attribute to any integer property in your model:
+
+
+using YourApplicationName.CustomValidations;
+
+namespace YourApplicationName.Models
+{
+    public class YourModel
+    {
+        [EvenIdNumber(ErrorMessage = "ID number must be even.")]
+        public int Id { get; set; }
+
+        // Other properties...
+    }
+}
+In the example above, the Id property in the YourModel class will be validated using the custom EvenIdNumberAttribute. If the value of Id is even, the validation will pass. If it's odd, the validation will fail, and the error message "ID number must be even" will be displayed.
+
+By using this custom validation attribute, you can enforce the rule that the ID number should be even for specific properties in your model. This helps to ensure data consistency and adherence to your application's specific requirements.
